@@ -1,79 +1,113 @@
-# ACML 2026 Tutorial
+# From Continual Learning to Self-Evolving Agents
 
-**From Continual Learning to Self-Evolving Agents**
+**ACML 2026 Tutorial · 150 minutes · In person**
 
-A complete, responsive, dependency-free website for GitHub Pages. The content is based on the supplied tutorial proposal and programme image. The programme totals **150 minutes**, including the 10-minute closing discussion.
+**Tongtong Wu** (Monash University) · **Dong Gong** (UNSW Sydney) · **Reza Haffari** (Monash University)
 
-## Files
+[Tutorial page](https://wutong8023.github.io/acml2026-self-evolving-agents/) · [Tutorial proposal (PDF)](assets/acml2026-tutorial-proposal.pdf)
 
-```text
-.
-├── index.html                       # All public tutorial content
-├── 404.html                         # GitHub Pages error page
-├── assets/
-│   ├── styles.css                   # Responsive and print styles
-│   ├── main.js                      # Accessible navigation and module controls
-│   ├── favicon.svg                  # Local vector icon
-│   └── acml2026-tutorial-proposal.pdf
-├── .github/workflows/pages.yml      # GitHub Pages deployment
-├── .nojekyll                        # Serve as a plain static site
-├── .gitignore
-└── README.md
-```
+## Overview
 
-No npm installation, build tool, external font, analytics, or API key is needed. All tutorial content, navigation, individual module disclosures, and reading links work without JavaScript. JavaScript adds the mobile menu, expand/collapse-all control, section highlighting, and direct module-link expansion.
+How can AI systems continue to learn as their knowledge, tools, environments, and users’ needs evolve?
 
-## Preview locally
+Continual learning has traditionally focused on acquiring new knowledge without catastrophically forgetting prior capabilities. Modern AI agents face a broader challenge: they must decide what to learn from experience, when adaptation is needed, where new knowledge should live, and how to verify that an update improves their behaviour.
 
-From this repository directory:
+This tutorial presents continual learning as the foundation for building self-evolving agents. We revisit continual learning in the foundation-model era, develop an adaptation hierarchy spanning context and retrieval, external memory, prompts and adapters, modular experts, and backbone updates, and examine memory as an active decision mechanism.
 
-```bash
-python3 -m http.server 8000 --bind 127.0.0.1
-```
+We then connect these ideas to agents that learn from their own operation through a loop of capability diagnosis, selective adaptation, verification, and consolidation. The central message is that effective self-evolution requires **selective, localised, and verifiable adaptation**.
 
-Open <http://127.0.0.1:8000>. Press Ctrl+C to stop the server. You can also open `index.html` directly in a browser.
+## Four Organising Questions
 
-## Deploy to GitHub Pages
+- **What to learn?** Distinguish transient context shifts from persistent capability changes.
+- **When to adapt?** Determine when experience calls for a lasting update.
+- **Where to store new knowledge?** Choose an adaptation mechanism based on the persistence, scope, and timescale of the change.
+- **How to verify an update?** Evaluate improvements and retained capabilities before consolidation.
 
-The local repository is configured for:
+## Learning Outcomes
 
-<https://github.com/wutong8023/acml2026-self-evolving-agents>
+By the end of the tutorial, participants will be able to:
 
-1. Commit these files to the repository's `main` branch and push them to GitHub.
-2. In the GitHub repository, open **Settings → Pages**.
-3. Under **Build and deployment → Source**, select **GitHub Actions**.
-4. Open **Actions → Deploy GitHub Pages**. If the initial run happened before Pages was enabled, select **Run workflow** for the `main` branch.
-5. After the workflow succeeds, GitHub provides the deployed URL in the `github-pages` environment.
+- Analyse adaptation methods through the four organising questions.
+- Select where an update should live, from context and retrieval to memory, adapters, modular experts, or backbone parameters.
+- Design memory policies governing experience selection, abstraction, retrieval, and deliberate forgetting.
+- Diagnose whether a failure calls for changing memory or parameters.
+- Design a self-evolution loop and evaluate it beyond final-task accuracy.
 
-Expected URL for the configured repository (only available after successful deployment):
+## Audience and Prerequisites
 
-<https://wutong8023.github.io/acml2026-self-evolving-agents/>
+The tutorial is intended for machine learning researchers, students, and practitioners interested in continual learning, foundation models, and adaptive AI agents. Familiarity with deep learning and foundation models is recommended. **No prior background in continual learning or agents is assumed.**
 
-Subsequent pushes to `main` redeploy the website. The workflow stages only public website files in `_site`, so the README and repository configuration are not included in the published artifact.
+## Programme
 
-Workflow structure follows [GitHub's custom Pages workflow documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+The tutorial consists of six self-contained modules and a closing discussion, totalling **150 minutes**. Each module can be followed independently, while the sequence develops a shared adaptation hierarchy and self-evolution loop.
 
-### Alternative: deploy from a branch
+### M1 · Overview: From Continual Learning to Self-Evolving Agents
 
-Instead of using the included Actions workflow, remove `.github/workflows/pages.yml`, then choose **Deploy from a branch → main → / (root)** in **Settings → Pages**. The `.nojekyll` file ensures plain static hosting. Use one deployment method at a time.
+**Tongtong Wu, Dong Gong, and Reza Haffari · 15 minutes**
 
-## Update the content
+We map the vocabulary of continual learning, self-evolution, and LLM agents; distinguish transient context shifts from persistent capability changes; discuss why repeated fine-tuning is inefficient; and introduce the four organising questions.
 
-- **Title, abstract, learning outcomes, programme, bios, resources:** edit `index.html`.
-- **Date, start time, room:** replace the `.schedule-note` paragraph when confirmed; add the same details to the hero if desired. No date or venue has been invented.
-- **Slides or recordings:** add the files under `assets/` and real links under Resources when available. No placeholder buttons are included.
-- **Colour, typography, spacing:** edit the variables and rules in `assets/styles.css`.
-- **Site icon:** edit `assets/favicon.svg`.
-- **Repository name or custom domain:** update the home link in `404.html` and the URLs in this README. Main-page assets and links are relative and support GitHub project paths.
-- **Proposal:** replace `assets/acml2026-tutorial-proposal.pdf` if a revised version is supplied.
+### M2 · Continual Learning Foundations and the Foundation-Model Era
 
-The presenter roles, affiliations, email addresses, publication details, and arXiv links reproduce the supplied proposal. The site does not assert independent verification of those details. The original PDF is included as a public downloadable resource; remove its two links and its file if it should not be published.
+**Dong Gong · 25 minutes**
 
-## Content and design notes
+We revisit replay, regularisation, parameter isolation, and expansion through their assumptions and stability–plasticity trade-offs. We examine how foundation models reshape forgetting and transfer, then introduce the adaptation hierarchy and how to choose where an update should live.
 
-- English page content; `lang="en"` is set on both HTML pages.
-- Native `<details>` elements provide keyboard-accessible module descriptions.
-- Skip navigation, visible keyboard focus, reduced-motion support, and print styling are included.
-- All fonts and design assets are local; external requests occur only when a visitor follows a reading or email link.
-- No event registration, date, venue, speaker portrait, or official conference logo has been fabricated.
-- No licence is assigned to the supplied proposal or other third-party research materials.
+### M3 · Memory in Continual Learning and Self-Evolution
+
+**Dong Gong · 30 minutes**
+
+We treat memory as an active decision mechanism for experience selection, abstraction, retrieval, and deliberate forgetting. We compare episodic and semantic, parametric and external, and passive and diagnosis-driven memory, and discuss why larger memory alone does not imply stronger long-term capability.
+
+### M4 · Agents That Learn: Anatomy and Where Change Enters
+
+**Tongtong Wu · 20 minutes**
+
+We unpack the components of a learning agent: policy, context, memory, tools, skills, environment, and multi-agent topology. Drawing on evidence of deployment drift, we map adaptation mechanisms onto these components and distinguish component-level from policy-level change.
+
+### M5 · Self-Evolving Agents
+
+**Tongtong Wu · 30 minutes**
+
+We develop a closed loop connecting experience, capability diagnosis, targeted assistance, selective adaptation, verification, and consolidation. Topics include the evolution of memory, skills, and tools; policy improvement from trajectories and active interaction; test-time adaptation; and structural evolution of agent topologies.
+
+### M6 · Evaluation, Open Challenges, and Conclusion
+
+**Reza Haffari · 20 minutes**
+
+We examine introspection and self-evaluation as gates for accepting updates. Evaluation extends beyond final-task accuracy to retention, adaptation speed, transfer, efficiency, robustness, and error accumulation. We conclude with challenges in model–memory coordination, resource growth, and reliable self-generated learning.
+
+### Closing Discussion
+
+**All presenters · 10 minutes**
+
+An open discussion of practical design choices, open challenges, and future research directions.
+
+## Presenters
+
+### Tongtong Wu · Monash University
+
+Tongtong Wu is a Research Fellow in the Department of Data Science & AI at Monash University. His research focuses on continual learning, adaptive language models and memory, and self-evolving agents.
+
+Contact: [Tongtong.Wu@monash.edu](mailto:Tongtong.Wu@monash.edu)
+
+### Dong Gong · UNSW Sydney
+
+Dong Gong is a Senior Lecturer in the School of Computer Science and Engineering at UNSW Sydney, where he leads the Artificer AI Lab. His work targets reliable, self-improving AI for open-ended, continuously changing environments, including continual learning, memory mechanisms, dynamically expandable architectures, and post-training and test-time adaptation of foundation models.
+
+Contact: [dong.gong@unsw.edu.au](mailto:dong.gong@unsw.edu.au)
+
+### Reza Haffari · Monash University
+
+Reza Haffari is a Professor and previous ARC Future Fellow in the Department of Data Science & AI at Monash University. His research spans continual and lifelong learning, active experience selection and interaction, uncertainty-aware self-evaluation, and reliable adaptation.
+
+Contact: [Gholamreza.Haffari@monash.edu](mailto:Gholamreza.Haffari@monash.edu)
+
+## Suggested Reading
+
+- T. Wu et al. **Continual Learning for LLMs: A Survey.** 2024. [arXiv:2402.01364](https://arxiv.org/abs/2402.01364)
+- H. Gao et al. **A Survey of Self-Evolving Agents.** 2025. [arXiv:2507.21046](https://arxiv.org/abs/2507.21046)
+- J. Bell et al. **The Future of Continual Learning in the Era of Foundation Models.** 2025. [arXiv:2506.03320](https://arxiv.org/abs/2506.03320)
+- J. Fang et al. **A Comprehensive Survey of Self-Evolving AI Agents.** 2025. [arXiv:2508.07407](https://arxiv.org/abs/2508.07407)
+
+The [tutorial proposal](assets/acml2026-tutorial-proposal.pdf) contains the complete reference list.
