@@ -143,7 +143,8 @@ details[open] > summary .module-toggle::after { transform: rotate(90deg); }
 .presenter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 35px; }
 .presenter { display: flex; flex-direction: column; border-top: 1px solid #bbc8b8; padding-top: 24px; scroll-margin-top: 110px; }
 .presenter-topline { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 26px; }
-.presenter-initials { display: flex; width: 46px; height: 46px; border-radius: 50%; background: #dfe7da; color: var(--green); align-items: center; justify-content: center; font-family: var(--serif); font-size: 19px; }
+.presenter-photo-link { display: inline-flex; flex-shrink: 0; border-radius: 50%; }
+.presenter-photo { display: block; width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: center; border: 1px solid #c4d0bf; background: #dfe7da; }
 .presenter-topline .tiny-label { font-size: 9px; color: var(--muted); letter-spacing: .7px; }
 .presenter h3 { font: 400 29px/1.2 var(--serif); letter-spacing: -.6px; margin-bottom: 10px; }
 .presenter-role { font-size: 11px; color: var(--muted); }
